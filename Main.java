@@ -20,6 +20,56 @@ public class Main {
         };
 
 
+        // Create a HashMap to store the pairs of each state and its capital
+        Map<String, String> statesWithCapsHashmap = new HashMap<>();
+
+      
+        //Iterate through the 'statesWithCaps' array
+        for(int i = 0; i < statesWithCaps.length; i++) {
+            // Variable 'state' gets the current element of the array in index 0 which is states.
+          
+            String state = statesWithCaps[i][0];
+            // Variable 'capital' gets the current element of the array in index 1 which is capital
+          
+            String capital = statesWithCaps[i][1];
+            // Adds the state and capital to the 'statesWithCapsHashmap' hashmap
+            statesWithCapsHashmap.put(state.toLowerCase(), capital); 
+        }
+
+        // Display the content of the HashMap
+        System.out.println("State => Capital");
+        for (String state : statesWithCapsHashmap.keySet()) {
+            System.out.println(state + " ====> " + statesWithCapsHashmap.get(state));
+        }
+
+      
+        // Create TreeMap to sort the map by state
+        TreeMap<String, String> sortedStatesTreeMap = new TreeMap<>(statesWithCapsHashmap);
+
+      
+        // Initializing the scanner
+        Scanner scanner = new Scanner(System.in);
+      
+        System.out.print("Enter a state and then the program will display the capital for the state: ");
+
+      
+        // Create a variable called 'userInput' which stores user input
+        String userInput = scanner.nextLine();
+
+        // Using the .get method, this line
+        String capital = sortedStatesTreeMap.get(userInput);
+
+      
+        // Checks if capital exists in the hashmap and is not Null
+        if(capital != null){
+          // If user input and state exists, the user will get a prompt stating the capital
+            System.out.println("For the state " + userInput + " the capital is " + capital);
+         }else{
+          // Else if the state does not exist, user will get a prompt stating error
+            System.out.println("Error, please make sure that you're spelling the state correctly.");
+        }
+
       
     }
 }
+
